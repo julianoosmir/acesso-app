@@ -1,18 +1,48 @@
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BasicSnackBarComponent } from './basic-snack-bar/basic-snack-bar.component';
+import { MatIconModule } from '@angular/material/icon'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { MatTableModule } from '@angular/material/table';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+import { TokenInterceptor } from './core/token.interceptor';
+
 
 @NgModule({
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    BasicSnackBarComponent,
+    UsuariosComponent,
+    CadastroUsuarioComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatTableModule,
+    NgbModule
   ],
-  providers: [],
+  exports:[BasicSnackBarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

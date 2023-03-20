@@ -1,0 +1,28 @@
+
+<div id="wapper">
+  <div class="panel-auth">
+    <a class="btn btn-primary" [routerLink]="['/cadastro']">
+      link to user component
+    </a>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col" sortable="name">nome</th>
+          <th scope="col" sortable="area">username</th>
+          <th scope="col" sortable="population">perfil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of usuarios">
+          <th scope="row">{{ user.id }}</th>
+          <td>
+            {{ user.nome }}
+          </td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.perfil }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

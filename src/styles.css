@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Dosis|KoHo|Open+Sans");
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-image: url("./images/background.jpg");
+  padding: 0;
+  margin: 0;
+}
+
+
+
+/*# sourceMappingURL=master.css.map */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
