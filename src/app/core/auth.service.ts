@@ -14,21 +14,23 @@ export class AuthenticationService {
   public username: any;
   public senha: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   authenticationService(username: String, senha: String) {
     return this.http
       .post(URL_LOGIN, {
         username: username,
         senha: senha
-      },{responseType:"text"}).pipe(map((token:string) =>{
-        console.log(token);
-        this.registerSuccessfulLogin(token);
+      }, { responseType: "text" }).pipe(map((token: string) => {
+        if (token !== 'USUARIO DESABILITADO' && token !== 'CREDENCIAIS INVALIDAS' && token !== 'USUARIO NÃO CADASTRADO') {
+          this.registerSuccessfulLogin(token);
+        }
+
         return token;
       }));
   }
 
-  registerSuccessfulLogin(token:string) {
+  registerSuccessfulLogin(token: string) {
     sessionStorage.setItem(this.SESSION_ATTRIBUTE, token);
   }
 

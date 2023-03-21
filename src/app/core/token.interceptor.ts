@@ -10,7 +10,7 @@ import { UsuarioService } from './usuario.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(private usuarioService: UsuarioService){
+  constructor(private usuarioService: UsuarioService) {
 
   }
   intercept(
@@ -21,7 +21,7 @@ export class TokenInterceptor implements HttpInterceptor {
     let token = this.usuarioService.getToken();
     console.log(token);
 
-    request = request.clone({headers: request.headers.set('Authorization', 'Bearer ' + token)});
+    request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
 
     return next.handle(request);
   }

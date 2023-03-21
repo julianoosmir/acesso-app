@@ -13,7 +13,6 @@ export class UsuarioService{
 
   }
 
-
   getToken():string{
     const token = sessionStorage.getItem("authenticatedUser");
     if(token)
@@ -22,23 +21,10 @@ export class UsuarioService{
   }
 
   salvar(user: UsuarioDto) {
-    const headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Origin', 'POST');
-    headers.append('Authorization', `Bearer ${this.getToken()}`);
-    user = {
-      nome: user.nome,
-      username: user.username,
-      perfil: user.perfil,
-      senha: user.senha,
-      email: user.email,
-      ativo: user.ativo
-    }
-    return this.http.post(URL_USER, user,{headers : headers});
+    return this.http.post(URL_USER, user);
   }
 
   listar(): Observable<UsuarioResponse[]> {
-    const headers = new HttpHeaders();
-    headers.append('Authorization', `Bearer ${this.getToken()}`);
     return this.http.get<UsuarioResponse[]>(URL_USER_TODOS);
   }
 }

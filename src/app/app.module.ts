@@ -14,7 +14,10 @@ import { MatTableModule } from '@angular/material/table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
 import { TokenInterceptor } from './core/token.interceptor';
-
+import { ForcaComponent } from './forca/forca.component';
+import { ForcaCadastroComponent } from './forca-cadastro/forca-cadastro.component';
+import { ForcaGameComponent } from './forca-game/forca-game.component';
+import {MatListModule} from '@angular/material/list'
 
 @NgModule({
   providers: [
@@ -29,7 +32,10 @@ import { TokenInterceptor } from './core/token.interceptor';
     LoginComponent,
     BasicSnackBarComponent,
     UsuariosComponent,
-    CadastroUsuarioComponent
+    CadastroUsuarioComponent,
+    ForcaComponent,
+    ForcaCadastroComponent,
+    ForcaGameComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,7 @@ import { TokenInterceptor } from './core/token.interceptor';
     MatIconModule,
     MatSnackBarModule,
     MatTableModule,
+    MatListModule,
     NgbModule
   ],
   exports:[BasicSnackBarComponent],

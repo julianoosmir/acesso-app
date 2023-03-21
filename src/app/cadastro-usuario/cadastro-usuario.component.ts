@@ -47,7 +47,6 @@ export class CadastroUsuarioComponent {
     this.salvarCampos();
     this.usuarioService.salvar(this.usuario).subscribe((result)=>{
       console.log(result);
-
     })
   }
 

@@ -11,13 +11,8 @@ div#wapper div.panel-auth {
   padding: 5pc 3pc 0pc 3pc;
   background-color: #fff;
   width: 50vw;
-  height: 80vh;
+  height: 90vh;
   box-shadow: 1px 6px 8px 2px rgba(0, 0, 0, 0.42);
-}
-
-div#wapper div.panel-auth table {
-  margin-top: 20px;
-  box-shadow: 10px 16px 18px 12px rgba(0, 0, 0, 0.42);
 }
 
 div#wapper div.panel-auth h2 {
@@ -47,36 +42,12 @@ div#wapper div.panel-auth form label {
   font-size: 12pt;
   color: #777;
   font-weight: bolder;
+  margin-bottom: 1%;
 }
 
-div#wapper div.panel-auth form div {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
 
-div#wapper div.panel-auth form div i {
-  font-size: 14pt !important;
-  color: #ddd;
-  background-color: #444;
-  border-radius: 40px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding: 7px 5px 7px 8px;
-}
 
-div#wapper div.panel-auth form div input {
-  outline: none;
-  border: 1px solid #ddd;
-  border-radius: 40px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  background-color: transparent;
-  padding: 5px 12px 5px 6px;
-  height: 20px;
-  font-size: 11pt;
-  width: 100%;
-}
+
 
 div#wapper div.panel-auth form button {
   color: #f0f0f0;
@@ -92,36 +63,6 @@ div#wapper div.panel-auth form button:hover {
   animation-duration: 1s;
   background-color: #353b48;
   letter-spacing: 1px;
-}
-
-div#wapper div.content {
-  flex: 3;
-  z-index: 2;
-}
-
-div#wapper div.content article {
-  position: absolute;
-  right: 0;
-  box-sizing: border-box;
-  padding: 4pc;
-  bottom: 0;
-  font-family: "Open Sans";
-  color: #fff;
-}
-
-div#wapper div.content article p {
-  text-align: right;
-  margin: 0;
-}
-
-div#wapper div.content article p a {
-  text-decoration: none;
-  color: #fff;
-}
-
-div#wapper div.content article h4 {
-  font-size: 18pt;
-  margin-top: 6px;
 }
 
 .col {

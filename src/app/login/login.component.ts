@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       this.loginSuccess = true;
       this.loginMessage = 'Login Successful.';
       this.showSnackbarTopPosition(this.loginMessage,'',30000)
-      this.router.navigate(['/usuarios']);
+      this.router.navigate(['/forcas']);
      }
 
     });

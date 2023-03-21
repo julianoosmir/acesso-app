@@ -3,12 +3,6 @@ import { MatTable } from '@angular/material/table';
 import { UsuarioService } from '../core/usuario.service';
 import { UsuarioResponse } from '../models/usuarioResponse';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
 @Component({
   selector: 'app-usuarios',
@@ -16,14 +10,9 @@ export interface PeriodicElement {
   styleUrls: ['./usuarios.component.css'],
 })
 export class UsuariosComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-
   usuarios: UsuarioResponse[] = [];
 
-  @ViewChild(MatTable)
-  table!: MatTable<PeriodicElement>;
-
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
 
@@ -38,11 +27,4 @@ export class UsuariosComponent {
       );
   }
 
-  addData(): void {
-
-  }
-
-  removeData() {
-
-  }
 }
