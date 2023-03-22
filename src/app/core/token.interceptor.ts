@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
 
     let token = this.usuarioService.getToken();
-    console.log(token);
+
 
     request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
 

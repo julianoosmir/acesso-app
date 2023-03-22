@@ -7,6 +7,18 @@ div#wapper {
   align-items: center;
 }
 
+.btn-text-right{
+  margin-left: 92%;
+	text-align: right;
+  margin-bottom: 20px;;
+  display: flex;
+  width: 40px;
+}
+
+.btn-text-right span{
+  width: 10px;
+}
+
 div#wapper div.panel-auth {
   padding: 5pc 3pc 0pc 3pc;
   background-color: #fff;
@@ -52,7 +64,7 @@ div#wapper div.panel-auth form label {
 div#wapper div.panel-auth form div {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 div#wapper div.panel-auth form div i {

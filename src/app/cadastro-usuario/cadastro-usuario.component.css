@@ -45,7 +45,11 @@ div#wapper div.panel-auth form label {
   margin-bottom: 1%;
 }
 
-
+.btn-text-right{
+  margin-left: 100%;
+	text-align: right;
+  margin-bottom: 20px;;
+}
 
 
 

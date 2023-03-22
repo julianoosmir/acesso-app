@@ -1,8 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { URL_LOGIN } from '../contants/api';
+import { map, switchMap } from 'rxjs/operators';
+import { SESSION_ATTRIBUTE_AUTHENTICATED, SESSION_ATTRIBUTE_ROLE, URL_LOGIN } from '../contants/api';
 //import * as moment from "moment";
+import { UsuarioService } from './usuario.service';
+import decode from 'jwt-decode';
+import { Observable, of } from 'rxjs';
+import { AuthDto } from '../models/authDTo';
 
 @Injectable({
   providedIn: 'root',
@@ -13,25 +17,38 @@ export class AuthenticationService {
 
   public username: any;
   public senha: any;
+  authDto?: AuthDto;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private usuarioService: UsuarioService) { }
+
+
+  setRole(authDto: AuthDto) {
+    sessionStorage.setItem(SESSION_ATTRIBUTE_ROLE, authDto.role);
+  }
+
+  getRole(): string {
+    const role = sessionStorage.getItem(SESSION_ATTRIBUTE_ROLE);
+    if (role)
+      return role
+    return '';
+  }
 
   authenticationService(username: String, senha: String) {
     return this.http
       .post(URL_LOGIN, {
         username: username,
         senha: senha
-      }, { responseType: "text" }).pipe(map((token: string) => {
-        if (token !== 'USUARIO DESABILITADO' && token !== 'CREDENCIAIS INVALIDAS' && token !== 'USUARIO NÃO CADASTRADO') {
-          this.registerSuccessfulLogin(token);
+      }, { responseType: "json" }).pipe(map((authDto: any) => {
+        if (authDto.token !== 'USUARIO DESABILITADO' && authDto.token !== 'CREDENCIAIS INVALIDAS' && authDto.token !== 'USUARIO NÃO CADASTRADO') {
+          this.registerSuccessfulLogin(authDto);
+          this.setRole(authDto);
         }
-
-        return token;
+        return authDto;
       }));
   }
 
-  registerSuccessfulLogin(token: string) {
-    sessionStorage.setItem(this.SESSION_ATTRIBUTE, token);
+  registerSuccessfulLogin(authDto: AuthDto) {
+    sessionStorage.setItem(SESSION_ATTRIBUTE_AUTHENTICATED, authDto.token);
   }
 
   logout() {

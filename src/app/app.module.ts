@@ -17,7 +17,9 @@ import { TokenInterceptor } from './core/token.interceptor';
 import { ForcaComponent } from './forca/forca.component';
 import { ForcaCadastroComponent } from './forca-cadastro/forca-cadastro.component';
 import { ForcaGameComponent } from './forca-game/forca-game.component';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
+import { MenuComponent } from './menu/menu.component'
+import { RoleGuardServiceService } from './core/role-guard-service.service';
 
 @NgModule({
   providers: [
@@ -26,6 +28,7 @@ import {MatListModule} from '@angular/material/list'
       useClass: TokenInterceptor,
       multi: true,
     },
+    RoleGuardServiceService
   ],
   declarations: [
     AppComponent,
@@ -35,7 +38,8 @@ import {MatListModule} from '@angular/material/list'
     CadastroUsuarioComponent,
     ForcaComponent,
     ForcaCadastroComponent,
-    ForcaGameComponent
+    ForcaGameComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

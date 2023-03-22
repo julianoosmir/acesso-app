@@ -24,6 +24,10 @@ export class UsuarioService{
     return this.http.post(URL_USER, user);
   }
 
+  delete(id?: number){
+    return this.http.delete(URL_USER +"/"+ id);
+  }
+
   listar(): Observable<UsuarioResponse[]> {
     return this.http.get<UsuarioResponse[]>(URL_USER_TODOS);
   }

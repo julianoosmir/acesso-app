@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { Forca } from '../models/forca';
 import { ForcaService } from '../core/forca.service';
+import { AuthenticationService } from '../core/auth.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-forca',
@@ -10,11 +12,14 @@ import { ForcaService } from '../core/forca.service';
 
 export class ForcaComponent {
   forcas : Forca[] = []
+  role = '';
 
-  constructor(private forcaService: ForcaService) { }
+
+  constructor(private forcaService: ForcaService,private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
     this.getForca();
+    this.role = this.getRole();
   }
 
   getForca() {
@@ -24,6 +29,10 @@ export class ForcaComponent {
         this.forcas.push(...forcas)
       );
   }
+  getRole(){
+    return this.authenticationService.getRole();
+  }
+
   deletar(id?:number){
     this.forcaService.delete(id).subscribe(() =>{
         this.forcas = this.forcas.filter(forca => forca.id != id);

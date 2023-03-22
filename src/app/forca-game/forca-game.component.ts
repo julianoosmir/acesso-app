@@ -13,27 +13,26 @@ export class ForcaGameComponent implements OnInit {
   foto = 'forca.png';
   imagem = this.rota + this.foto;
   tentativas = 6;
-  palavraSecreta =  '';
+  palavraSecreta = '';
   letrasOculta: string[] = [];
-  dica : string | undefined = '';
+  dica: string | undefined = '';
   vitoria: boolean | undefined;
   constructor(
-    private location:Location,
+    private location: Location,
     private snackBar: MatSnackBar) {
 
   }
 
   ngOnInit() {
-    console.log(this.location.getState());
     this.dica = this.getForca(this.location.getState()).dica;
     this.palavraSecreta = this.getPalavra(this.location.getState());
     this.montarPalavraNaTela();
   }
 
-  getForca(state:any):Forca{
+  getForca(state: any): Forca {
     return state.forca;
   }
-  getPalavra(state:any): string | any{
+  getPalavra(state: any): string | any {
     return this.getForca(state).palavra;
   }
 
@@ -48,7 +47,6 @@ export class ForcaGameComponent implements OnInit {
 
   verificaLetraEscolhida(tag: any) {
     tag.disabled = true;
-    console.log(tag.innerHTML);
 
     if (this.tentativas > 0) {
       this.mudarStyleLetra(tag, true);
@@ -89,7 +87,6 @@ export class ForcaGameComponent implements OnInit {
     for (let i = 0; i < this.palavraSecreta.length; i++) {
       if (this.palavraSecreta[i] == letra) {
         this.letrasOculta[i] = letra;
-        console.log(this.letrasOculta);
       }
     }
     this.checarVitoria();
@@ -119,7 +116,10 @@ export class ForcaGameComponent implements OnInit {
       this.letrasOculta[i] = "";
     }
   }
-
+  getWordCount(str: string) {
+    return str.split(' ')
+      .filter((n) => { return n != '' }).length;
+  }
 }
 
 

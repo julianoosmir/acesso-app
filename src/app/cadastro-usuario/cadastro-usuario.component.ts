@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UsuarioDto } from '../models/usuarioDto';
 import { UsuarioService } from '../core/usuario.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -17,21 +18,10 @@ export class CadastroUsuarioComponent {
   @Input() email:string | undefined;
   @Input() ativo: boolean | undefined
 
-  constructor(private usuarioService: UsuarioService){
+  constructor(private usuarioService: UsuarioService,private snackBar: MatSnackBar){
 
   }
   ngOnInit() {
-    let jwt = this.usuarioService.getToken();
-    let jwtData = jwt.split('.')[1]
-    let decodedJwtJsonData = window.atob(jwtData)
-    let decodedJwtData = JSON.parse(decodedJwtJsonData)
-
-    let isAdmin = decodedJwtData.admin
-
-    console.log('jwtData: ' + jwtData)
-    console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
-    console.log('decodedJwtData: ' + decodedJwtData)
-    console.log('Is admin: ' + isAdmin)
 
   }
 
@@ -45,9 +35,18 @@ export class CadastroUsuarioComponent {
   }
   salvar(){
     this.salvarCampos();
-    this.usuarioService.salvar(this.usuario).subscribe((result)=>{
-      console.log(result);
+    this.usuarioService.salvar(this.usuario).subscribe(()=>{
+      this.showSnackbarTopPosition("salvo com sucesso",'',3000)
+    },()=>{
+
     })
+  }
+  showSnackbarTopPosition(content: string, action: string | undefined, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 2000,
+      verticalPosition: "top", // Allowed values are  'top' | 'bottom'
+      horizontalPosition: "center" // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+    });
   }
 
 }

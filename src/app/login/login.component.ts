@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     }
 
   ngOnInit() {
+    sessionStorage.clear();
   }
   showSnackbarTopPosition(content: string, action: string | undefined, duration: any) {
     this.snackBar.open(content, action, {
@@ -39,7 +40,6 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    console.log(this.username, this.senha);
     this.authenticationService.authenticationService(this.username, this.senha).subscribe((result)=> {
      if(result === 'USUARIO DESABILITADO' || result === 'CREDENCIAIS INVALIDAS' || result === 'USUARIO NÃO CADASTRADO'){
       this.invalidLogin = true;

@@ -23,6 +23,6 @@ export class ForcaService {
   }
 
   delete(id?:number){
-    return this.http.delete(URL_FORCA+ '/' + id);
+    return this.http.delete(URL_FORCA + '/' + id);
   }
 }

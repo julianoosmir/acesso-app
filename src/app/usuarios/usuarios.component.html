@@ -1,9 +1,10 @@
+<app-menu></app-menu>
 <div id="wapper">
   <div class="panel-auth">
-    <a class="btn btn-primary" [routerLink]="['/cadastro-usuario']">
-      cadastrar usuario
+    <h2> LISTA DE <span>USUARIOS</span></h2>
+    <a class="btn btn-primary btn-text-right" *ngIf="role === 'ADMIN'"  [routerLink]="['/cadastro-usuario']">
+      <span class="bi bi-plus"></span>
     </a>
-    <button type="button" class="btn btn-primary">Sample Button <span class="bi bi-plus"></span></button>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -11,6 +12,7 @@
           <th scope="col" sortable="name">nome</th>
           <th scope="col" sortable="area">username</th>
           <th scope="col" sortable="population">perfil</th>
+          <th scope="col" sortable="population">Ação</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +23,14 @@
           </td>
           <td>{{ user.username }}</td>
           <td>{{ user.perfil }}</td>
+          <td *ngIf="role === 'ADMIN'">
+            <button mat-fab color="primary" *ngIf="role === 'ADMIN'" (click)="deletar(user.id)" class="btn btn-danger" aria-label="Example icon button with a delete icon">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn btn-success" *ngIf="role === 'ADMIN'">
+              <i class="bi bi-pencil"  [routerLink]="['/cadastro-usuario']" [state]="{user:user}"></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

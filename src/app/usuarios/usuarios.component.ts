@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
+import { AuthenticationService } from '../core/auth.service';
 import { UsuarioService } from '../core/usuario.service';
 import { UsuarioResponse } from '../models/usuarioResponse';
 
@@ -11,12 +12,15 @@ import { UsuarioResponse } from '../models/usuarioResponse';
 })
 export class UsuariosComponent {
   usuarios: UsuarioResponse[] = [];
-
-  constructor(private usuarioService: UsuarioService) { }
+  role = '';
+  constructor(private usuarioService: UsuarioService,private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
-
+    this.role = this.getRole();
     this.getUsuarios();
+  }
+  getRole(){
+    return this.authenticationService.getRole();
   }
 
   getUsuarios() {
@@ -25,6 +29,11 @@ export class UsuariosComponent {
       .subscribe((usuarios: UsuarioResponse[]) =>
         this.usuarios.push(...usuarios)
       );
+  }
+  deletar(id?:number){
+    this.usuarioService.delete(id).subscribe(() =>{
+        this.usuarios = this.usuarios.filter(forca => forca.id != id);
+    })
   }
 
 }
