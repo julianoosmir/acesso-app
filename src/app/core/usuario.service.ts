@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { URL_USER, URL_USER_TODOS } from "../contants/api";
 import { UsuarioDto } from "../models/usuarioDto";
+import { User } from "../models/usuarioModel";
 import { UsuarioResponse } from "../models/usuarioResponse";
 
 @Injectable({
@@ -22,6 +23,13 @@ export class UsuarioService{
 
   salvar(user: UsuarioDto) {
     return this.http.post(URL_USER, user);
+  }
+
+  alterar(user: UsuarioDto) {
+    return this.http.put(URL_USER, user);
+  }
+  getById(id : number): Observable<User>{
+    return this.http.get<User>(URL_USER + "/" + id);
   }
 
   delete(id?: number){

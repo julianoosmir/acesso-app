@@ -1,4 +1,5 @@
 export class UsuarioDto {
+  id?: number;
   nome: string | undefined;
   username: string | undefined;
   perfil: string | undefined;
