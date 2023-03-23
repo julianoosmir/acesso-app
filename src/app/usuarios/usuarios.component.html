@@ -13,7 +13,7 @@
             <th scope="col" sortable="name">nome</th>
             <th scope="col" sortable="area">username</th>
             <th scope="col" sortable="population">perfil</th>
-            <th scope="col" sortable="population">Ação</th>
+            <th scope="col" *ngIf="role === 'ADMIN'" sortable="population">Ação</th>
           </tr>
         </thead>
         <tbody>

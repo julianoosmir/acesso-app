@@ -4,6 +4,7 @@ import { AuthenticationService } from './auth.service';
 import { AuthDto } from '../models/authDTo';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class RoleGuardServiceService implements CanActivate {
 
   //authDto?: AuthDto;
 
-  constructor(private auth: AuthenticationService, public router: Router) {
+  constructor(private auth: AuthenticationService, public router: Router,private snackBar: MatSnackBar) {
   }
 
   canActivate(next: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
@@ -26,10 +27,20 @@ export class RoleGuardServiceService implements CanActivate {
 
     if(roles.indexOf(role_user) >= 0){
       return true
-    }
-    this.router.navigateByUrl("/");
-    return false;
+    }else{
+      this.showSnackbarTopPosition('Você não tem acesso','',3000);
+      this.router.navigateByUrl("/");
+      return false;
 
+    }
+
+  }
+  showSnackbarTopPosition(content: string, action: string | undefined, duration: any): void {
+    this.snackBar.open(content, action, {
+      duration: 2000,
+      verticalPosition: "top", // Allowed values are  'top' | 'bottom'
+      horizontalPosition: "center" // Allowed values are 'start' | 'center' | 'end' | 'left' | 'right'
+    });
   }
 
 }
