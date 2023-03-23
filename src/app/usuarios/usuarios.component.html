@@ -5,34 +5,37 @@
     <a class="btn btn-primary btn-text-right" *ngIf="role === 'ADMIN'"  [routerLink]="['/cadastro-usuario']">
       <span class="bi bi-plus"></span>
     </a>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th scope="col" sortable="name">nome</th>
-          <th scope="col" sortable="area">username</th>
-          <th scope="col" sortable="population">perfil</th>
-          <th scope="col" sortable="population">Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of usuarios">
-          <th scope="row">{{ user.id }}</th>
-          <td>
-            {{ user.nome }}
-          </td>
-          <td>{{ user.username }}</td>
-          <td>{{ user.perfil }}</td>
-          <td *ngIf="role === 'ADMIN'">
-            <button mat-fab color="primary" *ngIf="role === 'ADMIN'" (click)="deletar(user.id)" class="btn btn-danger" aria-label="Example icon button with a delete icon">
-              <mat-icon>delete</mat-icon>
-            </button>
-            <button class="btn btn-success" *ngIf="role === 'ADMIN'">
-              <i class="bi bi-pencil"  [routerLink]="['/cadastro-usuario']" [state]="{user:user}"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col" sortable="name">nome</th>
+            <th scope="col" sortable="area">username</th>
+            <th scope="col" sortable="population">perfil</th>
+            <th scope="col" sortable="population">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usuarios">
+            <th scope="row">{{ user.id }}</th>
+            <td>
+              {{ user.nome }}
+            </td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.perfil }}</td>
+            <td *ngIf="role === 'ADMIN'">
+              <button mat-fab color="primary" *ngIf="role === 'ADMIN'" (click)="deletar(user.id)" class="btn btn-danger" aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button class="btn btn-success" *ngIf="role === 'ADMIN'">
+                <i class="bi bi-pencil"  [routerLink]="['/cadastro-usuario']" [state]="{user:user}"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
