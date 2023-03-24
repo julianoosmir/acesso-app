@@ -54,6 +54,11 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/forcas']);
      }
 
+    },(erro)=>{
+      this.invalidLogin = true;
+      this.loginSuccess = false;
+      this.loginMessage = erro.error.text;
+      this.showSnackbarTopPosition(this.loginMessage,'',30000)
     });
   }
 
