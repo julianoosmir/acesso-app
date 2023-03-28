@@ -7,6 +7,7 @@ import { ForcaComponent } from './forca/forca.component';
 import { ForcaCadastroComponent } from './forca-cadastro/forca-cadastro.component';
 import { ForcaGameComponent } from './forca-game/forca-game.component';
 import { RoleGuardServiceService } from './core/role-guard-service.service';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -34,6 +35,12 @@ const routes: Routes = [
     path: 'jogo-forca', component: ForcaGameComponent,
     canActivate: [RoleGuardServiceService], data: {
       role: ['ADMIN','PLAYER']
+    }
+  },
+  {
+    path:'perfils', component: PerfilComponent,
+    canActivate:[RoleGuardServiceService], data:{
+      role: ['ADMIN']
     }
   }
 ];

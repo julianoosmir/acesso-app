@@ -24,7 +24,6 @@ export class RoleGuardServiceService implements CanActivate {
 
     console.log(roles.indexOf(role_user));
 
-
     if(roles.indexOf(role_user) >= 0){
       return true
     }else{

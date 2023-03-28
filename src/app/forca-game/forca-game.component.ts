@@ -79,7 +79,7 @@ export class ForcaGameComponent implements OnInit {
     this.tentativas--
     this.carregaImagemForca();
     if (this.tentativas == 0) {
-      this.showSnackbarTopPosition("OPS!" + "Não foi dessa vez ... A palavra secreta era " + this.palavraSecreta, '', 30000);
+      this.showSnackbarTopPosition("OPS!" + "Não foi dessa vez ... A palavra secreta era " + this.palavraSecreta, '', 50000);
     }
   }
   acertou(letra: string, tag: any) {

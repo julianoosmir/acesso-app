@@ -18,7 +18,7 @@ export class CadastroUsuarioComponent {
   user! : User;
   @Input() nome? = '';
   @Input() username: string | undefined;
-  @Input() perfil: string | undefined;
+  @Input() perfil: number | undefined;
   @Input() senha:string | undefined;
   @Input() email:string | undefined;
   @Input() ativo: boolean | undefined
@@ -71,7 +71,7 @@ export class CadastroUsuarioComponent {
           this.nome = response.nome;
           this.email = response.email;
           this.username = response.username;
-          this.perfil = userLocation.perfil;
+         // this.perfil = userLocation.perfil;
           this.user = response;
         });
       }

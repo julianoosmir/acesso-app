@@ -20,6 +20,7 @@ import { ForcaGameComponent } from './forca-game/forca-game.component';
 import {MatListModule} from '@angular/material/list';
 import { MenuComponent } from './menu/menu.component'
 import { RoleGuardServiceService } from './core/role-guard-service.service';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
   providers: [
@@ -39,7 +40,8 @@ import { RoleGuardServiceService } from './core/role-guard-service.service';
     ForcaComponent,
     ForcaCadastroComponent,
     ForcaGameComponent,
-    MenuComponent
+    MenuComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
