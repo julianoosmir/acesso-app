@@ -20,7 +20,7 @@
       <div>
         <label for="email">email : </label>
         <br />
-        <input type="username" class="form-control" name="username" id="email" [(ngModel)]="email"
+        <input type="username" class="form-control" name="email" id="email" [(ngModel)]="email"
           aria-describedby="emailHelp" placeholder="Enter username">
       </div>
       <br />
@@ -33,7 +33,9 @@
       <div class="form-group">
         <label for="perfil">perfil : </label>
         <br />
-        <input type="username" class="form-control" name="perfil" [(ngModel)]="perfil" id="perfil">
+        <select class="form-select" name="perfilId" [(ngModel)]="perfilId" id="perfilId">
+          <option *ngFor="let p of perfils" [value]="p.id">{{p.name}}</option>
+        </select>
       </div>
       <br />
       <div class="form-group">
