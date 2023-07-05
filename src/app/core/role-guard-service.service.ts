@@ -22,6 +22,8 @@ export class RoleGuardServiceService implements CanActivate {
 
     const role_user = this.auth.getRole();
 
+    console.log(role_user)
+
     console.log(roles.indexOf(role_user));
 
     if(roles.indexOf(role_user) >= 0){

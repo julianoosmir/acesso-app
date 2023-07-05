@@ -18,16 +18,31 @@ export class AuthenticationService {
   public username: any;
   public senha: any;
   authDto?: AuthDto;
+  private cookieStore = [];
+
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) { }
 
 
   setRole(authDto: AuthDto) {
+    document.cookie = SESSION_ATTRIBUTE_ROLE + '=' + (authDto.role || '');
     sessionStorage.setItem(SESSION_ATTRIBUTE_ROLE, authDto.role);
   }
-
+  parseCookies(cookies = document.cookie) {
+    this.cookieStore = [];
+    if (!!cookies === false) { return; }
+    const cookiesArr = cookies.split(';');
+    for (const cookie of cookiesArr) {
+      const cookieArr = cookie.split('=');
+      // @ts-ignore
+      this.cookieStore[cookieArr[0].trim()] = cookieArr[1];
+    }
+  }
   getRole(): string {
-    const role = sessionStorage.getItem(SESSION_ATTRIBUTE_ROLE);
+    // const role = sessionStorage.getItem(SESSION_ATTRIBUTE_ROLE);
+    this.parseCookies();
+    // @ts-ignore
+    const role = this.cookieStore[SESSION_ATTRIBUTE_ROLE];
     if (role)
       return role
     return '';
