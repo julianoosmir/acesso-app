@@ -10,12 +10,17 @@ div#wapper {
 }
 
 div#wapper div.panel-auth {
-  padding: 5pc 3pc 0pc 3pc;
   background-color: #fff;
   width: 50vw;
   height: 50vh;
   box-shadow: 1px 6px 8px 2px rgba(0, 0, 0, 0.42);
   overflow: hidden;
+  top: 0px;
+  padding: 18px 6% 0px 6%;
+  margin: 0 0 35px 20px;
+  border: 1px solid rgba(147, 184, 189, 0.8);
+  border-radius: 5px;
+
 }
 
 div#wapper div.panel-auth h2 {
@@ -53,11 +58,17 @@ div#wapper div.panel-auth form button {
   color: #f0f0f0;
   background-color: #40739e;
   border: 0;
+  border-radius: 5px;
   cursor: pointer;
   height: 40px;
   margin-top: 2pc;
   margin-bottom: 1px;
   max-width: 50%;
+  top: 50%;
+  left: 50%;
+  justify-content: center;
+  padding: 8px 5px;
+  align-items: center;
 
 }
 
@@ -68,17 +79,23 @@ div#wapper div.panel-auth form button:hover {
   letter-spacing: 1px;
 }
 
-
-
-
-
-
 .col {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
 }
 
+@media (max-width: 600px) {
+  .panel-auth {
+    width: 50%;
+  }
+}
+
+@media (max-height: 600px) {
+  .panel-auth {
+    height: 50%;
+  }
+}
 
 @keyframes hoverAnimate {
   to {
